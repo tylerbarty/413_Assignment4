@@ -40,27 +40,24 @@ namespace _413_Assignment4.Controllers
         [HttpPost]
         public IActionResult Suggest(Suggestion appResponse)
         {
-            Regex reg = new Regex(@"^([\+][0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})((x|ext|extension)?[0-9]{1,4}?)$");
+            bool badnumber = false;
+            Regex reg = new Regex(@"^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$");
 
             //Validate the model
-            while (true)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+
+                if (!reg.IsMatch(appResponse.Phone))
                 {
-                
-
-
-                    if (!reg.IsMatch(appResponse.Phone))
-                    {
-                        break;
-                    }
-                    TempStorage.AddApplication(appResponse);
-                    return View("SubmittedForm", appResponse);
+                    badnumber = true;
+                    return View(badnumber);
                 }
+                TempStorage.AddApplication(appResponse);
+                return View("SubmittedForm", appResponse);
             }
 
             //List out the Validation Errors
-            return View();
+            return View(badnumber);
  
         }
 

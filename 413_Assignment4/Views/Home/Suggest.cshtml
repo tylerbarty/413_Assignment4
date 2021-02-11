@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Suggest a Raunt";
+    ViewData["Title"] = "Suggest a Restaurant";
 }
 
 @model _413_Assignment4.Models.Suggestion
@@ -9,17 +9,24 @@
         <form asp-action="Suggest" method="post">
             <label asp-for="Name">Your Name:</label><br />
             <input asp-for="Name" />
-            <br />
+            <br /><br />
             <label asp-for="RauntName">Restraunt Name:</label><br />
             <input asp-for="RauntName" />
-            <br />
+            <br /><br />
             <label asp-for="FavDish">Favorite Dish:</label><br />
             <input asp-for="FavDish" />
-            <br />
-            <label asp-for="Phone">Restraunt Phone Number:</label><br />
+            <br /><br />
+            <label asp-for="Phone">Restaurant Phone Number:</label><br />
+            <label asp-for="Phone">( use the (XXX) XXX-XXXX format)</label><br />
+            @if (true)
+            {
+                @:Phone Number was put in wrong, check format and try again
+                <br />
+            }
+            
             <input asp-for="Phone" />
             <br /><br />
-            <button type="submit">Submit Restaurant</button>
+            <button type="submit" class="btn btn-info btn-lg">Submit Info</button>
             <div asp-validation-summary="All"></div>
         </form>
     </div>
