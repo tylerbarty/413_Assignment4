@@ -17,6 +17,8 @@ namespace _413_Assignment4.Models
         public string FavDish { get; set; } = "It's all tasty!";
         [Required]
         public string Phone { get; set; }
+        [Required]
+        public bool badnumber { get; set; } = false;
 
     }
 }

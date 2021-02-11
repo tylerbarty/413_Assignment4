@@ -40,7 +40,6 @@ namespace _413_Assignment4.Controllers
         [HttpPost]
         public IActionResult Suggest(Suggestion appResponse)
         {
-            bool badnumber = false;
             Regex reg = new Regex(@"^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$");
 
             //Validate the model
@@ -49,15 +48,15 @@ namespace _413_Assignment4.Controllers
 
                 if (!reg.IsMatch(appResponse.Phone))
                 {
-                    badnumber = true;
-                    return View(badnumber);
+                    appResponse.badnumber = true;
+                    return View(appResponse);
                 }
                 TempStorage.AddApplication(appResponse);
                 return View("SubmittedForm", appResponse);
             }
 
             //List out the Validation Errors
-            return View(badnumber);
+            return View(appResponse);
  
         }
 
