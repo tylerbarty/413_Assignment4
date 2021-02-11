@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Suggest a Raunt";
+}
+
+@model _413_Assignment4.Models.Suggestion
+
+    <div class="text-center">
+        <br />
+        <form asp-action="Suggest" method="post">
+            <label asp-for="Name">Your Name:</label><br />
+            <input asp-for="Name" />
+            <br />
+            <label asp-for="RauntName">Restraunt Name:</label><br />
+            <input asp-for="RauntName" />
+            <br />
+            <label asp-for="FavDish">Favorite Dish:</label><br />
+            <input asp-for="FavDish" />
+            <br />
+            <label asp-for="Phone">Restraunt Phone Number:</label><br />
+            <input asp-for="Phone" />
+            <br /><br />
+            <button type="submit">Submit Restaurant</button>
+            <div asp-validation-summary="All"></div>
+        </form>
+    </div>

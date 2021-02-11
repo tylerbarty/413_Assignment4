@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Top 5 Restaurants";
+    ViewBag.iCount = 1;
+}
+
+<br /><br />
+<div class="container text-center">
+
+    @foreach (string i in Model)
+    {
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pick No. @ViewBag.iCount</button>
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Pick No. @ViewBag.iCount</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>@i</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        
+        ViewBag.iCount++;
+        
+    }
+</div>
